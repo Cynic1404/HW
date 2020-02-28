@@ -59,7 +59,7 @@ def find_height(user, session):
         #находим спротсмена с ближайшим ростом
         athlete_with_nearest_height = session.query(Athlete).filter(Athlete.height == nearest_height).first()
         #распесатываем информацию о нем
-        print(f'Спротсмен, ближайший по росту, это {athlete_with_nearest_height.name}, имеет рост {athlete_with_nearest_height.height}')
+        print(f'Спротсмен, с ростом, ближайшим к {user.height}, это {athlete_with_nearest_height.name}, имеет рост {athlete_with_nearest_height.height}')
 
 
 def find_birthdate(user, session):
@@ -80,7 +80,7 @@ def find_birthdate(user, session):
         # находим спротсмена с ближайшим ДР
         athlete_with_nearest_birthdate = session.query(Athlete).filter(Athlete.birthdate == nearest_birthdate.strftime('%Y-%m-%d')).first()
         # распесатываем информацию о нем
-        print(f'Спротсмен, ближайший к дате рождения {user.birthdate}, {athlete_with_nearest_birthdate.name}, был рожден {athlete_with_nearest_birthdate.birthdate}')
+        print(f'Спротсмен с датой рождения, ближайшей к {user.birthdate}, это {athlete_with_nearest_birthdate.name}, был рожден {athlete_with_nearest_birthdate.birthdate}')
 
 
 """

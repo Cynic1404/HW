@@ -55,9 +55,9 @@ def request_data():
     можно ввести рост только 120-300 см
     """
 
-    height = 0
-    while int(height) < 120  or  int(height) > 300:
-        print('Веедите рост в см (120-300)')
+    height = ""
+    while not height.isnumeric() or (int(height) < 120 or int(height) > 300):
+        print('Веедите рост в см (120-300) Используйте цифры.')
         height = input("Рост: ")
     height = height[0]+'.'+height[1:]
 
