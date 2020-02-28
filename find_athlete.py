@@ -42,39 +42,66 @@ def connect_db():
 
 
 def find_height(user, session):
+    #находим всех атлетов с таким же ростом, как у введенного юзера
     athletes_with_same_height = session.query(Athlete).filter(Athlete.height == user.height)
+    #если таких несколько, выводим первого
     if athletes_with_same_height.count() >0:
         first_athlete = athletes_with_same_height.first()
         print(f'Спротсмен с таким же ростом {first_athlete.height} - это {first_athlete.name}')
+    # если атлетов с таким же ростом, как у введенного юзера, нет, находим ближайшего
     else:
+        #находим всех атлетов
         all_athletes = session.query(Athlete)
+        #составляем список с ростом всех спростменов
         list_height = [i.height for i in all_athletes if i.height!=None]
+        #находим ближайший рост к росту введенного юзера
         nearest_height = find_nearest(user.height, list_height)
+        #находим спротсмена с ближайшим ростом
         athlete_with_nearest_height = session.query(Athlete).filter(Athlete.height == nearest_height).first()
+        #распесатываем информацию о нем
         print(f'Спротсмен, ближайший по росту, это {athlete_with_nearest_height.name}, имеет рост {athlete_with_nearest_height.height}')
 
 
 def find_birthdate(user, session):
+    # находим всех атлетов с такой же датой рождения, как у введенного юзера
     athletes_with_same_birthdate = session.query(Athlete).filter(Athlete.birthdate == user.birthdate)
+    # если таких несколько, выводим первого
     if athletes_with_same_birthdate.count() >0:
         h = session.query(Athlete).filter(Athlete.birthdate == user.birthdate).first()
         print(f'Спротсмен с такой же датой рождения {h.birthdate} - это {h.name}')
+    # если атлетов с такой же датой рождения, как у введенного юзера, нет, находим ближайшего
     else:
+        # находим всех атлетов
         all_atheletes = session.query(Athlete)
+        # составляем список с ДР всех спростменов
         list_birthdates = [datetime.datetime.strptime(i.birthdate, '%Y-%m-%d') for i in all_atheletes if i.birthdate!=None]
+        # находим ближайший ДР к росту введенного юзера
         nearest_birthdate = find_nearest(datetime.datetime.strptime(user.birthdate, '%Y-%m-%d'), list_birthdates)
+        # находим спротсмена с ближайшим ДР
         athlete_with_nearest_birthdate = session.query(Athlete).filter(Athlete.birthdate == nearest_birthdate.strftime('%Y-%m-%d')).first()
+        # распесатываем информацию о нем
         print(f'Спротсмен, ближайший к дате рождения {user.birthdate}, {athlete_with_nearest_birthdate.name}, был рожден {athlete_with_nearest_birthdate.birthdate}')
 
 
-
+"""
+данная функция находит в листе list ближайшее значение к value
+Не стоит вникать, как это работает =)
+"""
 def find_nearest(value, list):
     given_value = value
     absolute_difference_function = lambda list_value: abs(list_value - given_value)
     closest_value = min(list, key=absolute_difference_function)
     return closest_value
 
+
+
 def main():
+    '''
+    изначально проверяется, есть ли в базе пользователь с таким id
+    Если такого пользователья нет, то печататся соответсвующее сообщени
+    Если пользоваткль есть, то мы начинвем искать в другой таблице спростоменов
+    с такими же/ближайшими ростом и датой рождения
+    '''
     session = connect_db()
     id = input("Введи ID пользователя для поиска: ")
     user = session.query(User).filter(User.id == id)

@@ -34,6 +34,10 @@ def request_data():
     email = input("Мне еще понадобится адрес твоей электронной почты: ")
     gender = input("Пол: ")
 
+    '''
+    код проверяет, что дата рождения записана в верном формате,
+    иначе - запрашивается повторвый ввод
+    '''
     birthdate = input("Дата рождения (формат YYYY-MM-DD): ")
     try:
         datetime.datetime.strptime(birthdate, '%Y-%m-%d')
@@ -47,6 +51,9 @@ def request_data():
             except ValueError:
                 check_date = False
 
+    """
+    можно ввести рост только 120-300 см
+    """
 
     height = 0
     while int(height) < 120  or  int(height) > 300:
