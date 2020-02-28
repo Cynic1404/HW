@@ -106,7 +106,7 @@ def main():
     id = input("Введи ID пользователя для поиска: ")
     user = session.query(User).filter(User.id == id)
     if user.count() == 0:
-        print('Пользователья с таким id не найдено')
+        print('Пользователя с таким id не найдено')
     else:
         find_height(user.first(), session)
         find_birthdate(user.first(), session)
