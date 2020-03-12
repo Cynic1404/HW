@@ -51,13 +51,22 @@ def album():
         "genre" : request.forms.get("genre"),
         "album" : request.forms.get("album")
     }
+
+    '''
+    проверка введенного года на валидность
+    остальнык поля нет смысла проверять, так как они всегда будут строками
+    '''
     if album_data['year'].isnumeric() == False:
         print('Year should be a number')
         raise HTTPError (409, 'Year should be a number')
+
+        #проверка базы данных на наличие альбома
     album_in_db = session.query(Album).filter(Album.album == album_data['album'], Album.artist == album_data['artist']).first()
     if album_in_db:
         print('Такой альбом уже есть в базе. Его ID - {}'.format(album_in_db.id))
         raise HTTPError (409, 'Такой альбом уже есть в базе')
+
+    #внесение в базу данных
     else:
         new_album = Album(
             year=album_data['year'],
