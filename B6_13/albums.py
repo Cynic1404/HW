@@ -51,19 +51,24 @@ def album():
         "genre" : request.forms.get("genre"),
         "album" : request.forms.get("album")
     }
-    print("Album added", album_data)
-    new_album = Album(
-        year=album_data['year'],
-        artist=album_data['artist'],
-        genre=album_data['genre'],
-        album=album_data['album']
-    )
-    session.add(new_album)
-    session.commit()
-    return album_data
-
-
-
+    if album_data['year'].isnumeric() == False:
+        print('Year should be a number')
+        raise HTTPError (409, 'Year should be a number')
+    album_in_db = session.query(Album).filter(Album.album == album_data['album'], Album.artist == album_data['artist']).first()
+    if album_in_db:
+        print('Такой альбом уже есть в базе. Его ID - {}'.format(album_in_db.id))
+        raise HTTPError (409, 'Такой альбом уже есть в базе')
+    else:
+        new_album = Album(
+            year=album_data['year'],
+            artist=album_data['artist'],
+            genre=album_data['genre'],
+            album=album_data['album']
+        )
+        session.add(new_album)
+        session.commit()
+        print('Album added', album_data)
+        return album_data
 
 
 
