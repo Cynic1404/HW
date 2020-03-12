@@ -52,13 +52,14 @@ def album():
         "album" : request.forms.get("album")
     }
 
-    '''
-    проверка введенного года на валидность
-    остальнык поля нет смысла проверять, так как они всегда будут строками
-    '''
+    # проверка, что все поля введены
+    if None in (album_data['artist'], album_data['genre'] , album_data['album'], album_data['year']):
+        raise HTTPError(409, 'Введены не все данные')
+    #проверка введенного года на валидность
     if album_data['year'].isnumeric() == False:
         print('Year should be a number')
         raise HTTPError (409, 'Year should be a number')
+
 
         #проверка базы данных на наличие альбома
     album_in_db = session.query(Album).filter(Album.album == album_data['album'], Album.artist == album_data['artist']).first()
