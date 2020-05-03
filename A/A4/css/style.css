@@ -1,0 +1,19 @@
+.aaa {
+	width: 400px;
+	height: 30px;
+	background-color: red;
+	color: white;
+}
+
+.block {
+	display: none;
+	width: 400px;
+	height: 400px;
+	background-color: red;
+	color: white;
+}
+
+.vis {
+	display: block;
+	position: absolute;
+}

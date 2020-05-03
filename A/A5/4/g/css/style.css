@@ -1,0 +1,16 @@
+.h {
+  height: 40px;
+  background: #ffed6f; 
+}
+.a {
+  height: calc(100vh - 40px);
+  background: #ccebc5; 
+}
+.m {
+  height: calc(100% - 40px);
+  background: #bc80bd; 
+}
+.f {
+  height: 40px;
+  background: #fccde5; 
+}

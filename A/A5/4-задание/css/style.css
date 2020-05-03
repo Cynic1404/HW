@@ -1,0 +1,19 @@
+.head{
+  height: 40px;
+  background-color: #6d9eeb;
+}
+
+.big{
+  background-color:#0b5394;
+  height: calc(100vh - 40px);
+}
+
+.right{
+  background-color: #cfe2f3;
+  height: calc(100vh - 80px);
+}
+
+.right2{
+  background-color: #6fa8dc;
+  height: 40px;
+}

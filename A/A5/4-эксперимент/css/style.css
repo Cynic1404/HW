@@ -1,0 +1,32 @@
+.blue-head{
+  background-color: #6d9eeb;
+  height: 40px;
+}
+
+
+.content > div:nth-child(1){
+  height: 600px;
+  background-color:#0b5394;
+}
+
+
+
+.zz > div:nth-child(1){
+  background-color: #cfe2f3;
+}
+
+.zz > div:nth-child(2){
+  background-color: #6fa8dc;
+  max-height: 40px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.button{
+  width: 100px;
+  height: 30px;
+  background-color: red;
+}

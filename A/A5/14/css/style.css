@@ -1,0 +1,23 @@
+body {
+  font-family: sans-serif;
+}
+
+.person {
+  margin-left: 20px;
+  border-left: 2px tomato solid;
+  padding-left: 15px;
+
+}
+
+.name,
+.salary,
+.age,
+.id {
+  text-transform: uppercase;
+  font-weight: 900;
+  color: tomato;
+}
+
+.info{
+  margin: 30px 0 0 20px;
+}
