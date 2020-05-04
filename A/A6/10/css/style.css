@@ -1,39 +1,32 @@
-.page-wrapper {
+.item-1 {
+    background-color: rgb(161, 48, 48);
+}
+
+.item-2 {
+    background-color: rgb(49, 163, 68);
+}
+
+.item-3 {
+    background-color: rgb(34, 32, 180);
+}
+
+.item-4 {
+    background-color: rgb(207, 219, 29);
+}
+
+.item-5 {
+    background-color: rgb(175, 52, 165);
+}
+
+
+.grid-wrapper {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: minmax(80px, auto) 1fr minmax(80px, auto);
-    height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-rows: auto;
+
+    grid-gap: 2vw;
 }
 
-.site-header {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    background-color: rgb(231, 121, 18);
-
-}
-
-.content {
-    grid-row: 2 / 3;
-    grid-column: 2/3;
-    background-color: rgb(238, 229, 98);
-}
-
-.sidebar-1 {
-    grid-row: 2 / 3;
-    grid-column: 1/2;
-    background-color: rgb(98, 198, 238);
-}
-
-.sidebar-2 {
-    grid-row: 2 / 3;
-    grid-column: 3/4;
-    background-color: rgb(98, 198, 238);
-}
-
-.site-footer {
-    grid-row: 3 / 4;
-    grid-column: 1 / 4;
-    background-color: rgb(74, 218, 74);
+.grid-item {
+    min-height: 100px;
 }

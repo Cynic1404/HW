@@ -20,13 +20,7 @@
 
 
 .grid-wrapper {
-
-display: grid;
-
-grid-template-columns: repeat(auto-fit, 400px);
-
-grid-template-rows: auto;
-
-grid-gap: 2vw;
-
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-template-rows: 100px 100px 100px;
 }
