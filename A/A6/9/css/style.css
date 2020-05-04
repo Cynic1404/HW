@@ -1,0 +1,32 @@
+.item-1 {
+    background-color: rgb(161, 48, 48);
+}
+
+.item-2 {
+    background-color: rgb(49, 163, 68);
+}
+
+.item-3 {
+    background-color: rgb(34, 32, 180);
+}
+
+.item-4 {
+    background-color: rgb(207, 219, 29);
+}
+
+.item-5 {
+    background-color: rgb(175, 52, 165);
+}
+
+
+.grid-wrapper {
+
+display: grid;
+
+grid-template-columns: repeat(auto-fit, 400px);
+
+grid-template-rows: auto;
+
+grid-gap: 2vw;
+
+}
